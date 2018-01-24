@@ -83,6 +83,16 @@ DATABASES = {
 }
 
 
+# Channels
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "bus.routing.channel_routing",
+    },
+}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 

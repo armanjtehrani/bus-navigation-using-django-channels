@@ -60,27 +60,6 @@ class CustomerConsumer(JsonWebsocketConsumer):
         """
         return ["test"]
 
-    def connect(self, message, **kwargs):
-        print('customer added, mess:', message)
-        requested_groups = self.build_requested_groups_for_user(message)
-        print("grp:", requested_groups)
-        print("grp:", type(requested_groups))
-        reply = []
-        fine_groups = []
-        for group in requested_groups:
-            if not self.group_exist(group):
-                reply.append({group: False})
-                print(group, 'not exist:(')
-                continue
-            print(group, 'exist:)')
-            reply.append({group: True})
-            fine_groups.append(group)
-            self.add_user_to_group(group)
-
-        self.message.reply_channel.send({'accept': True})
-        groups_info = self.build_groups_info_for_user(fine_groups)
-        self.message.reply_channel.send(groups_info)
-
     def build_requested_groups_for_user(self, message):
         if not message.content['query_string']:
             return []

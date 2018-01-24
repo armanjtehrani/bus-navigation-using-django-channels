@@ -1,4 +1,4 @@
-"""bus_navigation_using_django_channels URL Configuration
+"""bus_with_websocket URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -14,8 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
 
 urlpatterns = [
+    path('bus/', include('bus.urls')),
     path('admin/', admin.site.urls),
 ]

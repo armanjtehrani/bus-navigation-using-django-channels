@@ -34,4 +34,7 @@ class Bus(models.Model):
     token = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.line.name
+        name = self.line.name + " on station " + self.prev_station.name
+        if not self.is_on_station:
+            name += " to station " + self.next_station.name
+        return name

@@ -75,11 +75,11 @@ class CustomerConsumer(JsonWebsocketConsumer):
             print(group, 'exist:)')
             reply.append({group: True})
             fine_groups.append(group)
-            self.add_user_to_group(message, group)
+            self.add_user_to_group(group)
 
         self.message.reply_channel.send({'accept': True})
-        # groups_infos = self.build_groups_infos_for_user(fine_groups)
-        # self.message.reply_channel.send(groups_infos)
+        groups_info = self.build_groups_info_for_user(fine_groups)
+        self.message.reply_channel.send(groups_info)
 
     def build_requested_groups_for_user(self, message):
         if not message.content['query_string']:
@@ -94,28 +94,101 @@ class CustomerConsumer(JsonWebsocketConsumer):
     def group_exist(self, group_name):
         return Line.objects.filter(name=group_name).exists()
 
-    def add_user_to_group(self, message, group_name):
-        Group(group_name).add(message.reply_channel)
+    def add_user_to_group(self, group_name):
+        Group(group_name).add(self.message.reply_channel)
+
+    def discard_user_from_group(self, group_name):
+        Group(group_name).discard(self.message.reply_channel)
 
     def get_all_groups_names(self):
         return Line.objects.all().values_list('name', flat=True)
 
+    def build_groups_info_for_user(self, groups):
+        groups_info = []
+        for group in groups:
+            group_info = self.build_group_info(group)
+            groups_info.append(group_info)
+        return {'groups': groups_info}
+
+    def build_group_info(self, group_name: str):
+        line = Line.objects.filter(name=group_name).prefetch_related('stations').prefetch_related('buses')
+        if not line.exists():
+            return {}
+        line = line.first()
+        print('line stations:', line.stations)
+        print('line buses:', line.buses)
+        group_info = {'line': dict(id=line.id, name=line.name),
+                      'stations': self.build_group_stations_info(line.stations.all()),
+                      'buses': self.build_group_buses_info(line.buses.all())}
+
+        return group_info
+
+    def build_group_stations_info(self, stations):
+        print('statins:', stations)
+        if not stations.exists():
+            print('nooo')
+            return []
+        print('yesss')
+        stations_info = []
+        for station in stations:
+            stations_info.append({
+                'id': station.id,
+                'name': station.name,
+                'line': station.line_id,
+                'next_station': station.my_next_station_id,
+                'prev_station': station.my_prev_station_id,
+                'is_final_state': station.is_final_station,
+                'bus_wait_time': station.bus_wait_time,
+                'x_pos': station.x_pos,
+                'y_pos': station.y_pos,
+            })
+        return stations_info
+
+    def build_group_buses_info(self, buses):
+        if not buses.exists():
+            return []
+
+        buses_info = []
+        for bus in buses:
+            buses_info.append({
+                'id': bus.id,
+                'line': bus.line_id,
+                'speed': bus.speed,
+                'x_pos': bus.x_pos,
+                'y_pos': bus.y_pos,
+                'prev_station': bus.prev_station_id,
+                'next_station': bus.next_station_id,
+                'is_on_station': bus.is_on_station,
+                # 'last_update_time': bus.last_update_time,
+            })
+        return buses_info
+
     def receive(self, content, **kwargs):
+        added_groups = []
+        discarded_groups = []
+
         new_groups = content.get('add', [])
         if isinstance(new_groups, list):
             for group in new_groups:
-                if Line.objects.filter(name=group).exists():
-                    Group(group).add(self.message.reply_channel)
+                if self.group_exist(group):
+                    self.add_user_to_group(group)
+                    added_groups.append(group)
                     print('group:', group, 'added:D')
+
         old_groups = content.get('discard', [])
         if isinstance(old_groups, list):
             for group in old_groups:
-                if Line.objects.filter(name=group).exists():
-                    Group(group).discard(self.message.reply_channel)
-                    print('group:', group, 'discarded:D')
-        print('msg:', type(content))
-        print('msg:', content)
-        self.send(content)
+                if self.group_exist(group):
+                    self.discard_user_from_group(group)
+                    discarded_groups.append(group)
+                print('group:', group, 'discarded:D')
+        added_groups_info = self.build_groups_info_for_user(added_groups)
+        print('msg:', type(added_groups_info))
+        print('msg:', added_groups_info)
+        all_groups_info = {'add': added_groups_info,
+                           'discard': discarded_groups}
+        print('data:', all_groups_info)
+        self.send(all_groups_info)
 
     def disconnect(self, message, **kwargs):
         print("on close::::")

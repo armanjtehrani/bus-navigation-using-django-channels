@@ -1,14 +1,50 @@
-from django.http import HttpResponse
+import json
+from time import sleep
+
 from channels.handler import AsgiHandler
 from channels import Group
 from channels.generic import BaseConsumer
 from channels.generic.websockets import WebsocketConsumer
 from channels.generic.websockets import JsonWebsocketConsumer
 
+
 from .models import *
 
 
-class CustomerConsumer(WebsocketConsumer):
+class TTT(JsonWebsocketConsumer):
+    # Set to True if you want it, else leave it out
+    strict_ordering = False
+
+    def connection_groups(self, **kwargs):
+        """
+        Called to return the list of groups to automatically add/remove
+        this connection to/from.
+        """
+        return ["test"]
+
+    def connect(self, message, **kwargs):
+        print('msg:', message.content)
+        self.message.reply_channel.send({'accept': True})
+        self.message.reply_channel.send({"bale": 22})
+        print('yeaa')
+
+    def receive(self, content, **kwargs):
+        """
+        Called when a message is received with decoded JSON content
+        """
+        # Simple echo
+        print('content:', content)
+        print('content:', type(content))
+        self.send(content)
+
+    def disconnect(self, message, **kwargs):
+        """
+        Perform things on connection close
+        """
+        pass
+
+
+class CustomerConsumer(JsonWebsocketConsumer):
 
     # Set to True to automatically port users from HTTP cookies
     # (you don't need channel_session_user, this implies it)
@@ -30,16 +66,24 @@ class CustomerConsumer(WebsocketConsumer):
         print("grp:", requested_groups)
         print("grp:", type(requested_groups))
         reply = []
+        fine_groups = []
         for group in requested_groups:
             if not self.group_exist(group):
                 reply.append({group: False})
+                print(group, 'not exist:(')
                 continue
+            print(group, 'exist:)')
             reply.append({group: True})
+            fine_groups.append(group)
             self.add_user_to_group(message, group)
 
         self.message.reply_channel.send({'accept': True})
+        # groups_infos = self.build_groups_infos_for_user(fine_groups)
+        # self.message.reply_channel.send(groups_infos)
 
     def build_requested_groups_for_user(self, message):
+        if not message.content['query_string']:
+            return []
         groups = str(message.content['query_string']).split("=")[1][:-1].split(',')
         for index in range(len(groups)):
             grp = groups[index]
@@ -56,15 +100,22 @@ class CustomerConsumer(WebsocketConsumer):
     def get_all_groups_names(self):
         return Line.objects.all().values_list('name', flat=True)
 
-    def receive(self, text=None, bytes=None, **kwargs):
-        """
-        Called when a message is received with either text or bytes
-        filled out.
-        """
-        # Simple echo
-        # print('msg:', dict(text))
-        print('msg:', type(text))
-        self.send(text=text, bytes=bytes)
+    def receive(self, content, **kwargs):
+        new_groups = content.get('add', [])
+        if isinstance(new_groups, list):
+            for group in new_groups:
+                if Line.objects.filter(name=group).exists():
+                    Group(group).add(self.message.reply_channel)
+                    print('group:', group, 'added:D')
+        old_groups = content.get('discard', [])
+        if isinstance(old_groups, list):
+            for group in old_groups:
+                if Line.objects.filter(name=group).exists():
+                    Group(group).discard(self.message.reply_channel)
+                    print('group:', group, 'discarded:D')
+        print('msg:', type(content))
+        print('msg:', content)
+        self.send(content)
 
     def disconnect(self, message, **kwargs):
         print("on close::::")
@@ -72,7 +123,7 @@ class CustomerConsumer(WebsocketConsumer):
             Group(group_name).discard(message.reply_channel)
 
 
-class BusConsumer(WebsocketConsumer):
+class BusConsumer(JsonWebsocketConsumer):
 
     # Set to True to automatically port users from HTTP cookies
     # (you don't need channel_session_user, this implies it)
@@ -105,7 +156,7 @@ class BusConsumer(WebsocketConsumer):
         print('line:', my_line.name)
         Group(my_line.name).add(message.reply_channel)
         my_bus_info = self.get_bus_info(my_bus)
-        Group(my_line.name).send({"new_bus": my_bus_info})
+        self.group_send(my_line.name, {"new_bus": my_bus_info})
 
     def get_token_from_message(self, message):
         token = str(message.content["query_string"]).split("=")[1][:-1]
@@ -125,13 +176,14 @@ class BusConsumer(WebsocketConsumer):
                     'token': bus.token}
         return bus_info
 
-    def receive(self, text=None, bytes=None, **kwargs):
+    def receive(self, content, **kwargs):
         """
-        Called when a message is received with either text or bytes
-        filled out.
+        Called when a message is received with decoded JSON content
         """
         # Simple echo
-        self.send(text=text, bytes=bytes)
+        print('content:', content)
+        print('content:', type(content))
+        self.send(content)
 
     def disconnect(self, message, **kwargs):
         """

@@ -11,8 +11,8 @@ class Line(models.Model):
 class Station(models.Model):
     name = models.CharField(max_length=100)
     line = models.ForeignKey(Line, related_name='stations', on_delete=models.CASCADE)
-    my_next_station = models.ForeignKey('self', related_name='prev_station', on_delete=models.SET_NULL, null=True, blank=True)
-    my_prev_station = models.ForeignKey('self', related_name='next_station', on_delete=models.SET_NULL, null=True, blank=True)
+    next_station = models.ForeignKey('self', related_name='my_prev_station', on_delete=models.SET_NULL, null=True, blank=True)
+    prev_station = models.ForeignKey('self', related_name='my_next_station', on_delete=models.SET_NULL, null=True, blank=True)
     is_final_station = models.BooleanField(default=False)
     bus_wait_time = models.IntegerField(default=5)
     x_pos = models.FloatField()

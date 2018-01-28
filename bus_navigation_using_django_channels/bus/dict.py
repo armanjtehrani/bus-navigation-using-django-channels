@@ -9,7 +9,7 @@ DB = {'lines': [
          {'name': "Taghato",     'x_pos': 35.736356, 'y_pos': 51.519501, 'next': "Seraj",       'prev': "Khodabande",   'is_final_station': 'False'},
          {'name': "Seraj",       'x_pos': 35.737114, 'y_pos': 51.513954, 'next': "Kababi",      'prev': "Taghato",      'is_final_station': 'False'},
          {'name': "Kababi",      'x_pos': 35.738159, 'y_pos': 51.506090, 'next': "41",          'prev': "Seraj",        'is_final_station': 'False'},
-         {'name': "41",          'x_pos': 35.739065, 'y_pos': 51.499063, 'next': "Meydan57",    'prev': "Kababi",    'is_final_station': 'False'},
+         {'name': "41",          'x_pos': 35.739065, 'y_pos': 51.499063, 'next': "Meydan57",    'prev': "Kababi",       'is_final_station': 'False'},
          {'name': "Meydan57",    'x_pos': 35.739709, 'y_pos': 51.493870, 'next': "Hengam",      'prev': "41",           'is_final_station': 'False'},
          {'name': "Hengam",      'x_pos': 35.739961, 'y_pos': 51.492046, 'next': "Meydan57",    'prev': "Meydan57",     'is_final_station': 'True'}],
      'buses': [
@@ -68,7 +68,7 @@ DB = {'lines': [
 
     {'name': 'Emam-Ali HW',
      'stations': [
-        {'name': "Emam-ali",    'x_pos': 35.758475, 'y_pos': 51.484625, 'next': "6th",          'prev': "6th",          'is_final_station': 'True'},
+        {'name': "Emam-ali",    'x_pos': 35.758475, 'y_pos': 51.484625, 'next': "d",          'prev': "6th",          'is_final_station': 'True'},
         {'name': "aras",        'x_pos': 35.755941, 'y_pos': 51.485097, 'next': "Azadegan",     'prev': "Cheraghi",     'is_final_station': 'False'},
         {'name': "park",        'x_pos': 35.752719, 'y_pos': 51.485312, 'next': "Hasanpoor",    'prev': "6th",          'is_final_station': 'False'},
         {'name': "sohrb",       'x_pos': 35.749811, 'y_pos': 51.484153, 'next': "Varbaz",       'prev': "Azadegan",     'is_final_station': 'False'},

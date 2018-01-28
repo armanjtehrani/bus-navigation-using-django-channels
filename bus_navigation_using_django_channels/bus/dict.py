@@ -1,5 +1,6 @@
 from .models import *
 
+
 DB = {'lines': [
     {'name': 'Bagheri',
      'stations': [
@@ -57,79 +58,89 @@ DB = {'lines': [
         {'name': "mehr",        'x_pos': 35.743339, 'y_pos': 51.495869, 'next': "Bahar",        'prev': "shahr",        'is_final_station' :'False'},
         {'name': "Bahar",       'x_pos': 35.741617, 'y_pos': 51.493867, 'next': "mehr",         'prev': "mehr",         'is_final_station' :'True'}],
      'buses': [
-         {'speed': "0.00053545", 'x_pos': 35.755564, 'y_pos': 51.511877, 'next': "6th",       'prev': "Cheraghi",          'is_on_station': 'True',    'token': "oiuytr"},
-         {'speed': "0.00053478", 'x_pos': 35.753492, 'y_pos': 51.509420, 'next': "Azadegan",  'prev': "6th",     'is_on_station': 'True',    'token': "iuytre"},
-         {'speed': "0.00053357", 'x_pos': 35.752125, 'y_pos': 51.507553, 'next': "Hasanpoor", 'prev': "Azadegan",          'is_on_station': 'True',    'token': "uytrew"},
-         {'speed': "0.00053234", 'x_pos': 35.750392, 'y_pos': 51.505225, 'next': "Varbaz",    'prev': "Hasanpoor",     'is_on_station': 'True',    'token': "ytrewq"},
-         {'speed': "0.00053589", 'x_pos': 35.748694, 'y_pos': 51.502843, 'next': "shahr",     'prev': "Varbaz",    'is_on_station': 'True',    'token': "qazwsx"},
-         {'speed': "0.00053158", 'x_pos': 35.745185, 'y_pos': 51.498036, 'next': "mehr",      'prev': "shahr",       'is_on_station': 'True',    'token': "wsxedc"},
-         {'speed': "0.00053023", 'x_pos': 35.743339, 'y_pos': 51.495869, 'next': "Bahar",     'prev': "mehr",        'is_on_station': 'True',    'token': "edcrfv"},
-         {'speed': "0.00053645", 'x_pos': 35.741617, 'y_pos': 51.493867, 'next': "mehr",      'prev': "Bahar",         'is_on_station': 'True',    'token': "rfvtgb"}, ]},
+         {'speed': "0.00053545", 'x_pos': 35.755564, 'y_pos': 51.511877, 'next': "6th",       'prev': "Cheraghi",   'is_on_station': 'True',    'token': "oiuytr"},
+         {'speed': "0.00053478", 'x_pos': 35.753492, 'y_pos': 51.509420, 'next': "Azadegan",  'prev': "6th",        'is_on_station': 'True',    'token': "iuytre"},
+         {'speed': "0.00053357", 'x_pos': 35.752125, 'y_pos': 51.507553, 'next': "Hasanpoor", 'prev': "Azadegan",   'is_on_station': 'True',    'token': "uytrew"},
+         {'speed': "0.00053234", 'x_pos': 35.750392, 'y_pos': 51.505225, 'next': "Varbaz",    'prev': "Hasanpoor",  'is_on_station': 'True',    'token': "ytrewq"},
+         {'speed': "0.00053589", 'x_pos': 35.748694, 'y_pos': 51.502843, 'next': "shahr",     'prev': "Varbaz",     'is_on_station': 'True',    'token': "qazwsx"},
+         {'speed': "0.00053158", 'x_pos': 35.745185, 'y_pos': 51.498036, 'next': "mehr",      'prev': "shahr",      'is_on_station': 'True',    'token': "wsxedc"},
+         {'speed': "0.00053023", 'x_pos': 35.743339, 'y_pos': 51.495869, 'next': "Bahar",     'prev': "mehr",       'is_on_station': 'True',    'token': "edcrfv"},
+         {'speed': "0.00053645", 'x_pos': 35.741617, 'y_pos': 51.493867, 'next': "mehr",      'prev': "Bahar",      'is_on_station': 'True',    'token': "rfvtgb"}, ]},
 
     {'name': 'Emam-Ali HW',
      'stations': [
-        {'name': "Emam_ali",    'x_pos':35.758475, 'y_pos':51.484625, 'next':"aras"		, 'prev': "aras",      'is_final_station': 'True'},
-        {'name': "aras",        'x_pos':35.755941, 'y_pos':51.485097, 'next':"park"		, 'prev': "Emam_ali",  'is_final_station': 'False'},
-        {'name': "park",        'x_pos':35.752719, 'y_pos':51.485312, 'next':"sohrab"	, 'prev': "aras",      'is_final_station': 'False'},
-        {'name': "sohrab",       'x_pos':35.749811, 'y_pos':51.484153,'next':"boostan"	, 'prev': "park",      'is_final_station': 'False'},
-        {'name': "boostan",     'x_pos':35.747129, 'y_pos':51.483391, 'next':"taleghani", 'prev': "sohrab",	   'is_final_station': 'False'},
-        {'name': "taleghani",   'x_pos':35.744475, 'y_pos':51.483115, 'next':"Farjam" 	, 'prev': "boostan"	 , 'is_final_station': 'False'},
-        {'name': "Farjam",      'x_pos':35.742150, 'y_pos':51.483662, 'next':"nazemi"	, 'prev': "taleghani", 'is_final_station': 'False'},
-        {'name': "nazemi",      'x_pos':35.739024, 'y_pos':51.483565, 'next':"Farjam" 	, 'prev': "Farjam",    'is_final_station': 'True'}],
+        {'name': "Emam_ali",    'x_pos':35.758475, 'y_pos':51.484625, 'next':"aras"    , 'prev': "aras",        'is_final_station': 'True'},
+        {'name': "aras",        'x_pos':35.755941, 'y_pos':51.485097, 'next':"park"    , 'prev': "Emam_ali",    'is_final_station': 'False'},
+        {'name': "park",        'x_pos':35.752719, 'y_pos':51.485312, 'next':"sohrab"  , 'prev': "aras",        'is_final_station': 'False'},
+        {'name': "sohrab",       'x_pos':35.749811, 'y_pos':51.484153,'next':"boostan"  , 'prev': "park",       'is_final_station': 'False'},
+        {'name': "boostan",     'x_pos':35.747129, 'y_pos':51.483391, 'next':"taleghani", 'prev': "sohrab",     'is_final_station': 'False'},
+        {'name': "taleghani",   'x_pos':35.744475, 'y_pos':51.483115, 'next':"Farjam"   , 'prev': "boostan"   , 'is_final_station': 'False'},
+        {'name': "Farjam",      'x_pos':35.742150, 'y_pos':51.483662, 'next':"nazemi"  , 'prev': "taleghani",   'is_final_station': 'False'},
+        {'name': "nazemi",      'x_pos':35.739024, 'y_pos':51.483565, 'next':"Farjam"   , 'prev': "Farjam",     'is_final_station': 'True'}],
      'buses': [
          {'speed': "0.00053945", 'x_pos': 35.758475, 'y_pos': 51.484625, 'next':"aras",        'prev': "Emam_ali",    'is_on_station': 'True',    'token': "tgbyhn"},
          {'speed': "0.00053878", 'x_pos': 35.755941, 'y_pos': 51.485097, 'next':"park",       'prev': "aras",         'is_on_station': 'True',    'token': "yhnujm"},
          {'speed': "0.00053257", 'x_pos': 35.752719, 'y_pos': 51.485312, 'next':"sohrab",     'prev': "park",         'is_on_station': 'True',    'token': "ujmik,"},
          {'speed': "0.00053134", 'x_pos': 35.749811, 'y_pos': 51.484153, 'next':"boostan",    'prev': "sohrab",       'is_on_station': 'True',    'token': "okmijn"},
-         {'speed': "0.00053589", 'x_pos': 35.747129, 'y_pos': 51.483391, 'next':"taleghani",  'prev': "boostan",	  'is_on_station': 'True',    'token': "ijnuhb"},
+         {'speed': "0.00053589", 'x_pos': 35.747129, 'y_pos': 51.483391, 'next':"taleghani",  'prev': "boostan",      'is_on_station': 'True',    'token': "ijnuhb"},
          {'speed': "0.00053658", 'x_pos': 35.744475, 'y_pos': 51.483115, 'next':"Farjam",     'prev': "taleghani",    'is_on_station': 'True',    'token': "uhbygv"},
          {'speed': "0.00053823", 'x_pos': 35.742150, 'y_pos': 51.483662, 'next':"nazemi",     'prev': "Farjam",       'is_on_station': 'True',    'token': "ygvtfc"},
          {'speed': "0.00053645", 'x_pos': 35.739024, 'y_pos': 51.483565, 'next':"Farjam",     'prev': "nazemi",       'is_on_station': 'True',    'token': "tfcrdx"}, ]}
 ]}
 
 
-def build_stations(db_line, station):
-    name = station['name']
-    x = station['x_pos']
-    y = station['y_pos']
-    is_final = station['is_on_station']
-    return Station.objects.create(line=db_line, name=station['name'], x_pos=x, y_pos=y, is_final_station=is_final)
+class BuildDb:
+    def build_stations(self, db_line, station):
+        name = station['name']
+        x = station['x_pos']
+        y = station['y_pos']
+        is_final = station['is_final_station']
+        return Station.objects.create(line=db_line, name=station['name'], x_pos=x, y_pos=y, is_final_station=is_final)
+
+    def update_station_next_and_prev(self, db_stations, station_name):
+        station = db_stations[station_name]['db']
+        next = db_stations[station_name]['next']
+        prev = db_stations[station_name]['prev']
+        station.next_station = db_stations[next]['db']
+        station.prev_station = db_stations[prev]['db']
+        station.save()
+
+    def build_bus(self, bus, db_stations, db_line):
+        speed = bus['speed']
+        if not speed:
+            speed = 0.000535
+        x = bus['x_pos']
+        y = bus['y_pos']
+        next = db_stations[bus['next']]['db']
+        prev = db_stations[bus['prev']]['db']
+        is_on = bus['is_on_station']
+        token = bus['token']
+        Bus.objects.create(line=db_line,
+                           speed=speed, x_pos=x, y_pos=y,
+                           next_station=next, prev_station=prev,
+                           is_on_station=is_on,
+                           token=token)
+
+    def build_lines(self):
+        lines = DB['lines']
+        for line in lines:
+            db_line = Line.objects.create(name=line['name'])
+            db_stations = {}
+            print('line:', db_line)
+            for station in line['stations']:
+                print('station name:', station['name'])
+                db_stations[station['name']] = dict()
+                db_stations[station['name']]['db'] = self.build_stations(db_line, station)
+                db_stations[station['name']]['next'] = station['next']
+                db_stations[station['name']]['prev'] = station['prev']
+            for station_name in db_stations:
+                self.update_station_next_and_prev(db_stations, station_name)
+            for bus in line['buses']:
+                self.build_bus(bus, db_stations, db_line)
+
+    def build_db(self):
+        if not Line.objects.all().exists():
+            self.build_lines()
 
 
-def update_station_next_and_prev(db_stations, station_name):
-    station = db_stations[station_name]['db']
-    next = db_stations[station_name]['next']
-    prev = db_stations[station_name]['prev']
-    station.next_station = db_stations[next]
-    station.prev_station = db_stations[prev]
-    station.save()
-
-
-def build_bus(bus, db_stations, db_line):
-    speed = bus['speed']
-    if not speed:
-        speed = 5
-    x = bus['x_pos']
-    y = bus['y_pos']
-    next = db_stations[bus['next']]['db']
-    prev = db_stations[bus['prev']]['db']
-    is_on = bus['is_on_station']
-    Bus.objects.create(line=db_line,
-                       speed=speed, x_pos=x, y_pos=y,
-                       next_station=next, prev_station=prev,
-                       is_on_station=is_on)
-
-
-def build_db():
-    lines = DB['lines']
-    for line in lines:
-        db_line = Line.objects.create(name=line['name'])
-        db_stations = {}
-        for station in line['stations']:
-            db_stations[station['name']]['db'] = build_stations(db_line, station)
-            db_stations[station['name']]['next'] = station['next']
-            db_stations[station['name']]['prev'] = station['prev']
-        for station_name in db_stations:
-            update_station_next_and_prev(db_stations, station_name)
-        for bus in line['buses']:
-            build_bus(bus, db_stations, db_line)
+BuildDb().build_db()

@@ -23,7 +23,7 @@ class Station(models.Model):
 
 
 class Bus(models.Model):
-    line = models.ForeignKey(Line, related_name='buses', on_delete=models.SET_NULL, null=True, blank=True)
+    line = models.ForeignKey(Line, related_name='buses', on_delete=models.CASCADE, null=True, blank=True)
     speed = models.FloatField(default=0.000535)
     x_pos = models.FloatField()
     y_pos = models.FloatField()
@@ -34,7 +34,19 @@ class Bus(models.Model):
     token = models.CharField(max_length=200)
 
     def __str__(self):
-        name = self.line.name + " on station " + self.prev_station.name
+        if self.line:
+            line_name = self.line.name
+        else:
+            line_name = 'no line'
+        if self.prev_station:
+            prev_name = self.prev_station.name
+        else:
+            prev_name = 'no prev station'
+        if self.next_station:
+            next_name = self.next_station.name
+        else:
+            next_name = 'no next station'
+        name = line_name + " on station " + prev_name
         if not self.is_on_station:
-            name += " to station " + self.next_station.name
+            name += " to station " + next_name
         return name

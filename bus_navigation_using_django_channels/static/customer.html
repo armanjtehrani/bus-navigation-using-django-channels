@@ -1,10 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html>
+<meta charset="UTF-8">
+   <head>
+      <script src = "https://maps.googleapis.com/maps/api/js"></script>
 
-</body>
+      <script>
+          var sock = new WebSocket("ws://" + window.location.host + "/customers");
+          sock.onmessage = function (p1) {
+              var data = JSON.parse(p1.data)
+
+          };
+
+function loadMap() {
+    var mapOptions = {
+        center:new google.maps.LatLng(35.728588, 51.488300), zoom:15,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+    };
+
+    var map = new google.maps.Map(document.getElementById("sample"),mapOptions);
+
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(35.728588, 51.488300),
+        map: map
+    });
+}
+
+
+
+
+
+      </script>
+
+   </head>
+
+   <body onload = "loadMap()">
+      <div id = "sample" style = "width:570px; height:580px;"></div>
+   </body>
+
 </html>

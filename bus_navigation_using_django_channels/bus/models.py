@@ -24,7 +24,7 @@ class Station(models.Model):
 
 class Bus(models.Model):
     line = models.ForeignKey(Line, related_name='buses', on_delete=models.SET_NULL, null=True, blank=True)
-    speed = models.IntegerField(default=5)
+    speed = models.FloatField(default=0.000535)
     x_pos = models.FloatField()
     y_pos = models.FloatField()
     prev_station = models.ForeignKey(Station, related_name='next_buses', on_delete=models.SET_NULL, null=True, blank=True)

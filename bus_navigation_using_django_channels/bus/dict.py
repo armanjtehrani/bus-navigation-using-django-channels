@@ -13,15 +13,15 @@ DB = {'lines': [
          {'name': "Meydan57",    'x_pos': 35.739709, 'y_pos': 51.493870, 'next': "Hengam",      'prev': "41",           'is_final_station': 'False'},
          {'name': "Hengam",      'x_pos': 35.739961, 'y_pos': 51.492046, 'next': "Meydan57",    'prev': "Meydan57",     'is_final_station': 'True'}],
      'buses': [
-        {'speed': "", 'x_pos': 35.747381,   'y_pos': 51.5280835,    'next': "Daneshvar",    'prev': "Borzuyi",      'is_on_station': "False",   'token': "qwerty"},
-        {'speed': "", 'x_pos': 35.745979,   'y_pos': 51.526678,     'next': "Khodabande",    'prev': "Daneshvar",      'is_on_station': "True",    'token': "qwerty"},
-        {'speed': "", 'x_pos': 35.7367045,  'y_pos': 51.5200000,    'next': "Taghato",      'prev': "Khodabande",    'is_on_station': "False",   'token': "qwerty"},
-        {'speed': "", 'x_pos': 35.736687,   'y_pos': 51.517006,     'next': "Seraj",        'prev': "Taghato",   'is_on_station': "False",   'token': "qwerty"},
-        {'speed': "", 'x_pos': 35.737114,   'y_pos': 51.513954,     'next': "Kababi",       'prev': "Seraj",      'is_on_station': "True",    'token': "qwerty"},
-        {'speed': "", 'x_pos': 35.737445,   'y_pos': 51.511663,     'next': "41",           'prev': "Kababi",        'is_on_station': "False",   'token': "qwerty"},
-        {'speed': "", 'x_pos': 35.747381,   'y_pos': 51.5280835,    'next': "Meydan57",     'prev': "41",       'is_on_station': "False",   'token': "qwerty"},
-        {'speed': "", 'x_pos': 35.739709,   'y_pos': 51.493870,     'next': "Hengam",       'prev': "Meydan57",           'is_on_station': "True",    'token': "qwerty"},
-        {'speed': "", 'x_pos': 35.739961,   'y_pos': 51.492046,     'next': "Meydan57",     'prev': "Hengam",     'is_on_station': "True",    'token': "qwerty"}, ]},
+        {'speed': "0.00053645", 'x_pos': 35.747381,   'y_pos': 51.5280835,    'next': "Daneshvar",    'prev': "Borzuyi",    'is_on_station': "False",   'token': "qwerty"},
+        {'speed': "0.00053578", 'x_pos': 35.745979,   'y_pos': 51.526678,     'next': "Khodabande",    'prev': "Daneshvar", 'is_on_station': "True",    'token': "wertyu"},
+        {'speed': "0.00053657", 'x_pos': 35.7367045,  'y_pos': 51.5200000,    'next': "Taghato",      'prev': "Khodabande", 'is_on_station': "False",   'token': "ertyui"},
+        {'speed': "0.00053834", 'x_pos': 35.736687,   'y_pos': 51.517006,     'next': "Seraj",        'prev': "Taghato",    'is_on_station': "False",   'token': "rtyuio"},
+        {'speed': "0.00053389", 'x_pos': 35.737114,   'y_pos': 51.513954,     'next': "Kababi",       'prev': "Seraj",      'is_on_station': "True",    'token': "tyuiop"},
+        {'speed': "0.00053458", 'x_pos': 35.737445,   'y_pos': 51.511663,     'next': "41",           'prev': "Kababi",     'is_on_station': "False",   'token': "asdfgh"},
+        {'speed': "0.00053123", 'x_pos': 35.747381,   'y_pos': 51.5280835,    'next': "Meydan57",     'prev': "41",         'is_on_station': "False",   'token': "sdfghj"},
+        {'speed': "0.00053345", 'x_pos': 35.739709,   'y_pos': 51.493870,     'next': "Hengam",       'prev': "Meydan57",   'is_on_station': "True",    'token': "dfghjk"},
+        {'speed': "0.00053578", 'x_pos': 35.739961,   'y_pos': 51.492046,     'next': "Meydan57",     'prev': "Hengam",     'is_on_station': "True",    'token': "fghjkl"}, ]},
 
     {'name': 'Resalat',
      'stations':
@@ -36,15 +36,15 @@ DB = {'lines': [
          {'name': "salehi",     'x_pos': 35.735275, 'y_pos': 51.498707, 'next': "sarsabz",    'prev': "mehr",     'is_final_station': 'False'},
          {'name': "sarsabz",    'x_pos': 35.735275, 'y_pos': 51.498707, 'next': "salehi",     'prev': "salehi",   'is_final_station': 'True'}],
      'buses': [
-         {'speed': "", 'x_pos': 35.730756, 'y_pos': 51.533331, 'next': "121st",     'prev': "Resalat",  'is_on_station': "False",   'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.731183, 'y_pos': 51.530091, 'next': "Hojr",      'prev': "121st",    'is_on_station': "True",    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.732022, 'y_pos': 51.523732, 'next': "Gas",       'prev': "Hojr",     'is_on_station': "False",   'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.732141, 'y_pos': 51.522752, 'next': "Bagheri",   'prev': "Gas",      'is_on_station': "True",    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.733211, 'y_pos': 51.514920, 'next': "Yas",       'prev': "Bagheri",  'is_on_station': "False",   'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.733516, 'y_pos': 51.512161, 'next': "shaparak",  'prev': "Yas",      'is_on_station': "True",    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.734527, 'y_pos': 51.504759, 'next': "mehr",      'prev': "shaparak", 'is_on_station': "False",   'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.734805, 'y_pos': 51.502559, 'next': "salehi",    'prev': "mehr",     'is_on_station': "True",    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.735275, 'y_pos': 51.498707, 'next': "sarsabz",   'prev': "salehi",   'is_on_station': "True",    'token': "qwerty"}, ]},
+         {'speed': "0.00053675", 'x_pos': 35.730756, 'y_pos': 51.533331, 'next': "121st",     'prev': "Resalat",  'is_on_station': "False",   'token': "zxcvbn"},
+         {'speed': "0.00053574", 'x_pos': 35.731183, 'y_pos': 51.530091, 'next': "Hojr",      'prev': "121st",    'is_on_station': "True",    'token': "xcvbnm"},
+         {'speed': "0.00053657", 'x_pos': 35.732022, 'y_pos': 51.523732, 'next': "Gas",       'prev': "Hojr",     'is_on_station': "False",   'token': "mnbvcx"},
+         {'speed': "0.00053831", 'x_pos': 35.732141, 'y_pos': 51.522752, 'next': "Bagheri",   'prev': "Gas",      'is_on_station': "True",    'token': "nbvcxz"},
+         {'speed': "0.00053389", 'x_pos': 35.733211, 'y_pos': 51.514920, 'next': "Yas",       'prev': "Bagheri",  'is_on_station': "False",   'token': "lkjhgf"},
+         {'speed': "0.00053498", 'x_pos': 35.733516, 'y_pos': 51.512161, 'next': "shaparak",  'prev': "Yas",      'is_on_station': "True",    'token': "kjhgfd"},
+         {'speed': "0.00053193", 'x_pos': 35.734527, 'y_pos': 51.504759, 'next': "mehr",      'prev': "shaparak", 'is_on_station': "False",   'token': "jhgfds"},
+         {'speed': "0.00053395", 'x_pos': 35.734805, 'y_pos': 51.502559, 'next': "salehi",    'prev': "mehr",     'is_on_station': "True",    'token': "hgfdsa"},
+         {'speed': "0.00053598", 'x_pos': 35.735275, 'y_pos': 51.498707, 'next': "sarsabz",   'prev': "salehi",   'is_on_station': "True",    'token': "poiuyt"}, ]},
 
     {'name': 'Hengam',
      'stations': [
@@ -57,14 +57,14 @@ DB = {'lines': [
         {'name': "mehr",        'x_pos': 35.743339, 'y_pos': 51.495869, 'next': "Bahar",        'prev': "shahr",        'is_final_station' :'False'},
         {'name': "Bahar",       'x_pos': 35.741617, 'y_pos': 51.493867, 'next': "mehr",         'prev': "mehr",         'is_final_station' :'True'}],
      'buses': [
-         {'speed': "", 'x_pos': 35.755564, 'y_pos': 51.511877, 'next': "6th",       'prev': "Cheraghi",          'is_on_station': 'True',    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.753492, 'y_pos': 51.509420, 'next': "Azadegan",  'prev': "6th",     'is_on_station': 'True',    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.752125, 'y_pos': 51.507553, 'next': "Hasanpoor", 'prev': "Azadegan",          'is_on_station': 'True',    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.750392, 'y_pos': 51.505225, 'next': "Varbaz",    'prev': "Hasanpoor",     'is_on_station': 'True',    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.748694, 'y_pos': 51.502843, 'next': "shahr",     'prev': "Varbaz",    'is_on_station': 'True',    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.745185, 'y_pos': 51.498036, 'next': "mehr",      'prev': "shahr",       'is_on_station': 'True',    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.743339, 'y_pos': 51.495869, 'next': "Bahar",     'prev': "mehr",        'is_on_station': 'True',    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.741617, 'y_pos': 51.493867, 'next': "mehr",      'prev': "Bahar",         'is_on_station': 'True',    'token': "qwerty"}, ]},
+         {'speed': "0.00053545", 'x_pos': 35.755564, 'y_pos': 51.511877, 'next': "6th",       'prev': "Cheraghi",          'is_on_station': 'True',    'token': "oiuytr"},
+         {'speed': "0.00053478", 'x_pos': 35.753492, 'y_pos': 51.509420, 'next': "Azadegan",  'prev': "6th",     'is_on_station': 'True',    'token': "iuytre"},
+         {'speed': "0.00053357", 'x_pos': 35.752125, 'y_pos': 51.507553, 'next': "Hasanpoor", 'prev': "Azadegan",          'is_on_station': 'True',    'token': "uytrew"},
+         {'speed': "0.00053234", 'x_pos': 35.750392, 'y_pos': 51.505225, 'next': "Varbaz",    'prev': "Hasanpoor",     'is_on_station': 'True',    'token': "ytrewq"},
+         {'speed': "0.00053589", 'x_pos': 35.748694, 'y_pos': 51.502843, 'next': "shahr",     'prev': "Varbaz",    'is_on_station': 'True',    'token': "qazwsx"},
+         {'speed': "0.00053158", 'x_pos': 35.745185, 'y_pos': 51.498036, 'next': "mehr",      'prev': "shahr",       'is_on_station': 'True',    'token': "wsxedc"},
+         {'speed': "0.00053023", 'x_pos': 35.743339, 'y_pos': 51.495869, 'next': "Bahar",     'prev': "mehr",        'is_on_station': 'True',    'token': "edcrfv"},
+         {'speed': "0.00053645", 'x_pos': 35.741617, 'y_pos': 51.493867, 'next': "mehr",      'prev': "Bahar",         'is_on_station': 'True',    'token': "rfvtgb"}, ]},
 
     {'name': 'Emam-Ali HW',
      'stations': [
@@ -77,14 +77,14 @@ DB = {'lines': [
         {'name': "Farjam",      'x_pos':35.742150, 'y_pos':51.483662, 'next':"nazemi"	, 'prev': "taleghani", 'is_final_station': 'False'},
         {'name': "nazemi",      'x_pos':35.739024, 'y_pos':51.483565, 'next':"Farjam" 	, 'prev': "Farjam",    'is_final_station': 'True'}],
      'buses': [
-         {'speed': "", 'x_pos': 35.758475, 'y_pos': 51.484625, 'next':"aras",        'prev': "Emam_ali",    'is_on_station': 'True',    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.755941, 'y_pos': 51.485097, 'next':"park",       'prev': "aras",         'is_on_station': 'True',    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.752719, 'y_pos': 51.485312, 'next':"sohrab",     'prev': "park",         'is_on_station': 'True',    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.749811, 'y_pos': 51.484153, 'next':"boostan",    'prev': "sohrab",       'is_on_station': 'True',    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.747129, 'y_pos': 51.483391, 'next':"taleghani",  'prev': "boostan",	    'is_on_station': 'True',    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.744475, 'y_pos': 51.483115, 'next':"Farjam",     'prev': "taleghani",    'is_on_station': 'True',    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.742150, 'y_pos': 51.483662, 'next':"nazemi",     'prev': "Farjam",       'is_on_station': 'True',    'token': "qwerty"},
-         {'speed': "", 'x_pos': 35.739024, 'y_pos': 51.483565, 'next':"Farjam",     'prev': "nazemi",       'is_on_station': 'True',    'token': "qwerty"}, ]}
+         {'speed': "0.00053945", 'x_pos': 35.758475, 'y_pos': 51.484625, 'next':"aras",        'prev': "Emam_ali",    'is_on_station': 'True',    'token': "tgbyhn"},
+         {'speed': "0.00053878", 'x_pos': 35.755941, 'y_pos': 51.485097, 'next':"park",       'prev': "aras",         'is_on_station': 'True',    'token': "yhnujm"},
+         {'speed': "0.00053257", 'x_pos': 35.752719, 'y_pos': 51.485312, 'next':"sohrab",     'prev': "park",         'is_on_station': 'True',    'token': "ujmik,"},
+         {'speed': "0.00053134", 'x_pos': 35.749811, 'y_pos': 51.484153, 'next':"boostan",    'prev': "sohrab",       'is_on_station': 'True',    'token': "okmijn"},
+         {'speed': "0.00053589", 'x_pos': 35.747129, 'y_pos': 51.483391, 'next':"taleghani",  'prev': "boostan",	  'is_on_station': 'True',    'token': "ijnuhb"},
+         {'speed': "0.00053658", 'x_pos': 35.744475, 'y_pos': 51.483115, 'next':"Farjam",     'prev': "taleghani",    'is_on_station': 'True',    'token': "uhbygv"},
+         {'speed': "0.00053823", 'x_pos': 35.742150, 'y_pos': 51.483662, 'next':"nazemi",     'prev': "Farjam",       'is_on_station': 'True',    'token': "ygvtfc"},
+         {'speed': "0.00053645", 'x_pos': 35.739024, 'y_pos': 51.483565, 'next':"Farjam",     'prev': "nazemi",       'is_on_station': 'True',    'token': "tfcrdx"}, ]}
 ]}
 
 

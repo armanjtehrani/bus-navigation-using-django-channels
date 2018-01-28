@@ -19,8 +19,8 @@ class GroupInfoManager:
         if not line.exists():
             return {}
         line = line.first()
-        print('line stations:', line.stations)
-        print('line buses:', line.buses)
+        print('line stations:', line.stations.all())
+        print('line buses:', line.buses.all())
         group_info = {'line': dict(id=line.id, name=line.name),
                       'stations': GroupInfoManager.build_group_stations_info(line.stations.all()),
                       'buses': GroupInfoManager.build_group_buses_info(line.buses.all())}
@@ -116,7 +116,6 @@ class CustomerConsumer(JsonWebsocketConsumer):
         all_groups_info = {'add': added_groups_info,
                            'discard': discarded_groups}
         print('data:', all_groups_info)
-        # self.send({'arman':{'jafar':'jafari'}})
         self.send(all_groups_info)
 
     def disconnect(self, message, **kwargs):

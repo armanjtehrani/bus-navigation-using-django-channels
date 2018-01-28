@@ -67,7 +67,7 @@ DB = {'lines': [
          {'speed': "0.00053023", 'x_pos': 35.743339, 'y_pos': 51.495869, 'next': "Bahar",     'prev': "mehr",       'is_on_station': 'True',    'token': "edcrfv"},
          {'speed': "0.00053645", 'x_pos': 35.741617, 'y_pos': 51.493867, 'next': "mehr",      'prev': "Bahar",      'is_on_station': 'True',    'token': "rfvtgb"}, ]},
 
-    {'name': 'Emam-Ali HW',
+    {'name': 'EmamAliHW',
      'stations': [
         {'name': "Emam_ali",    'x_pos':35.758475, 'y_pos':51.484625, 'next':"aras"    , 'prev': "aras",        'is_final_station': 'True'},
         {'name': "aras",        'x_pos':35.755941, 'y_pos':51.485097, 'next':"park"    , 'prev': "Emam_ali",    'is_final_station': 'False'},

@@ -1,39 +1,75 @@
+<!DOCTYPE html>
 <html>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+
    <head>
       <script src = "https://maps.googleapis.com/maps/api/js"></script>
 
       <script>
-          var sock = new WebSocket("ws://" + window.location.host + "/customers");
-          sock.onmessage = function (p1) {
-              var data = JSON.parse(p1.data)
+          function sleep(milliseconds) {
+              var start = new Date().getTime();
+              for (var i = 0; i < 1e7; i++) {
+                if ((new Date().getTime() - start) > milliseconds){
+                  break;
+                }
+              }
+            }
+            /*function httpGet(theUrl) {
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+                xmlHttp.send( null );
+                return xmlHttp.responseText['groups];
+            }
+            var lines = httpGet("http://" + "127.0.0.1:8000" + "/groups/");*/
+            var lines = ["Resalat"];
+            console.log('lines:', lines);
+            var socket = new WebSocket("ws://" + "127.0.0.1:8000" + "/customers/");
+            socket.onmessage = function(e) {
+                console.log("data");
+                console.log(e.data);
+            };
 
-          };
+            var json_data = {"add":lines};
+            var str_data = JSON.stringify(json_data);
+            console.log('json:', json_data);
+            console.log('str:', str_data);
+            sleep(3000);
+            console.log('pppp');
+            console.log("str:", str_data);
+            console.log('sock:', socket);
 
-function loadMap() {
-    var mapOptions = {
-        center:new google.maps.LatLng(35.728588, 51.488300), zoom:15,
-        mapTypeId:google.maps.MapTypeId.ROADMAP
-    };
+            socket.send(str_data);
 
-    var map = new google.maps.Map(document.getElementById("sample"),mapOptions);
+            var myCenter = new google.maps.LatLng(35.728588, 51.488300);
+            function loadMap(){
 
-    var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(35.728588, 51.488300),
-        map: map
-    });
-}
+            var mapProp = {
+               center:myCenter,
+               zoom:17,
+               mapTypeId:google.maps.MapTypeId.ROADMAP
+            };
 
+            var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
+            var marker = new google.maps.Marker({
+               position:myCenter,
+            });
 
+            marker.setMap(map);
 
+            var infowindow = new google.maps.InfoWindow({
+               content:"Hi"
+            });
 
+            google.maps.event.addListener(marker, 'click', function() {
+               infowindow.open(map,marker);
+            });
+         }
       </script>
-
    </head>
 
    <body onload = "loadMap()">
-      <div id = "sample" style = "width:570px; height:580px;"></div>
+      <div id = "googleMap" style = "width:580px; height:400px;"></div>
    </body>
 
 </html>

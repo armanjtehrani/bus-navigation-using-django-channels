@@ -68,7 +68,7 @@ DB = {'lines': [
 
     {'name': 'Emam-Ali HW',
      'stations': [
-        {'name': "Emam-ali",    'x_pos': 35.758475, 'y_pos': 51.484625, 'next': "d",          'prev': "6th",          'is_final_station': 'True'},
+        {'name': "Emam-ali",    'x_pos': 35.758475, 'y_pos': 51.484625, 'next': "6th",          'prev': "6th",          'is_final_station': 'True'},
         {'name': "aras",        'x_pos': 35.755941, 'y_pos': 51.485097, 'next': "Azadegan",     'prev': "Cheraghi",     'is_final_station': 'False'},
         {'name': "park",        'x_pos': 35.752719, 'y_pos': 51.485312, 'next': "Hasanpoor",    'prev': "6th",          'is_final_station': 'False'},
         {'name': "sohrb",       'x_pos': 35.749811, 'y_pos': 51.484153, 'next': "Varbaz",       'prev': "Azadegan",     'is_final_station': 'False'},

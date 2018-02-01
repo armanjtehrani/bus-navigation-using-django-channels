@@ -11,7 +11,7 @@ class GroupInfoManager:
         for group in groups:
             group_info = GroupInfoManager.build_group_info(group)
             groups_info.append(group_info)
-        return {'groups': groups_info}
+        return groups_info
 
     @staticmethod
     def build_group_info(group_name: str):

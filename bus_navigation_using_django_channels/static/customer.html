@@ -5,7 +5,17 @@
    <head>
       <script src = "https://maps.googleapis.com/maps/api/js"></script>
 
-      <script>
+
+       <script>
+          var lines = [];
+
+          var can_send_data = false;
+          function send(my_sock, data) {
+              if (can_send_data)
+                  my_sock.send(JSON.stringify(data));
+              else
+                  console.log("can not send data")
+          }
           function sleep(milliseconds) {
               var start = new Date().getTime();
               for (var i = 0; i < 1e7; i++) {
@@ -14,31 +24,56 @@
                 }
               }
             }
-            /*function httpGet(theUrl) {
+          function build_all_lines() {
+              return ["Resalat","EmamAliHW","Bagheri","Hengam"];
+          }
+
+          function update_status(data) {
+              lines = data['add'];
+              console.log(data);
+
+
+          }
+          function apply_user_command() {
+
+          }
+
+
+
+            function httpGet(theUrl) {
                 var xmlHttp = new XMLHttpRequest();
                 xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
                 xmlHttp.send( null );
-                return xmlHttp.responseText['groups];
+                return xmlHttp.responseText['groups'];
             }
-            var lines = httpGet("http://" + "127.0.0.1:8000" + "/groups/");*/
-            var lines = ["Resalat"];
-            console.log('lines:', lines);
-            var socket = new WebSocket("ws://" + "127.0.0.1:8000" + "/customers/");
+            console.log("hell",JSON.parse(httpGet("http://" + window.location.host + "/groups/")));
+
+            var socket = new WebSocket("ws://" + window.location.host + "/customers/");
             socket.onmessage = function(e) {
-                console.log("data");
-                console.log(e.data);
+                update_status(JSON.parse(e.data));
             };
+
+            socket.onopen = function () {
+                can_send_data = true;
+            };
+            var all_lines = build_all_lines();
+
+
+
+
+            console.log('lines:', lines);
+
+
+
 
             var json_data = {"add":lines};
             var str_data = JSON.stringify(json_data);
             console.log('json:', json_data);
             console.log('str:', str_data);
-            sleep(3000);
             console.log('pppp');
             console.log("str:", str_data);
             console.log('sock:', socket);
 
-            socket.send(str_data);
 
             var myCenter = new google.maps.LatLng(35.728588, 51.488300);
             function loadMap(){
@@ -66,6 +101,8 @@
             });
          }
       </script>
+
+
    </head>
 
    <body onload = "loadMap()">

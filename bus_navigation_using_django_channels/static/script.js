@@ -1,50 +1,4 @@
-<!DOCTYPE html>
-<html>
-	 <meta charset="UTF-8">
-
-	<head>
-
-		<style>
-			div.choise{
-					position: absolute;
-					top: 10px;
-					right: 1px;
-					width: 200px;
-				}
-		</style>
-
-
-
-
-
-	</head>
-
-
-	<body >
-
-
-
-
-		<div id = "googleMap" style = "width:700px; height:700px;"></div>
-
-
-		<div class ="choise">
-			<form id ="form">
-				<input id = "Resalat"   type="checkbox" name="vehicle" value="Resalat"  onchange="toggleCheckbox(this)"> Resalat<br>
-				<input id = "Bagheri"   type="checkbox" name="vehicle" value="Bagheri"  onchange="toggleCheckbox(this)"> Bagheri<br>
-				<input id = "Hengam"    type="checkbox" name="vehicle" value="Hengam"   onchange="toggleCheckbox(this)"> Hengam<br>
-			</form>
-		</div>
-
-
-
-
-
-
-		<script src = "https://maps.googleapis.com/maps/api/js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        var myCenter = new google.maps.LatLng(35.746031, 51.513406);
+var myCenter = new google.maps.LatLng(35.746031, 51.513406);
 
 
 var mapProp = {
@@ -62,13 +16,6 @@ main_dict = {
 	"Bagheri": [],
 	"EmamAliHW": [],
 };
-main_dictB = {
-	"Resalat": [],
-	"Hengam": [],
-	"Bagheri": [],
-	"EmamAliHW": [],
-};
-
 
  // show station
 function show_station(x_pos, y_pos, line_name, station_info){
@@ -144,7 +91,7 @@ function show_buses(x_pos, y_pos, line_name, station_info){
 
 	var marker = new google.maps.Circle({
 	   center:station,
-	   radius:20,
+	   radius:30,
 
 	   strokeColor:color,
 	   strokeOpacity:1,
@@ -157,8 +104,6 @@ function show_buses(x_pos, y_pos, line_name, station_info){
 
 	marker.setMap(map);
 	main_dict[line_name].push(marker);
-	main_dictB[line_name].push(marker);
-
 	var infowindow = new google.maps.InfoWindow({
 	   content: station_info,
 	   position : station
@@ -237,14 +182,13 @@ function toggleCheckbox(toggle){
 
 //WS REQ
 
-var ws = new WebSocket("ws://" + window.location.host + "/customers/");
+var ws = new WebSocket("ws://127.0.0.1:8000/customers/");
 ws.onmessage = function(e){
 	//console.log(JSON.parse(e.data));
 	var resp_lines = JSON.parse(e.data);
 	var added_lines = resp_lines["add"];
 	var dis_lines = resp_lines["discard"];
 	dis_recv_line__(dis_lines);
-    dis_recv_buses__(added_lines);
 	show_recv_stations__(added_lines);
 	show_recv_buses__(added_lines);
 
@@ -254,11 +198,12 @@ ws.onmessage = function(e){
 
 function dis_recv_line__(dis_list){
 	console.log("dis list", dis_list);
+	var stations ;
 	for(i=0; i<dis_list.length ; i++){
 		var line_name = dis_list[i]["name"];
 		var markers = main_dict[line_name];
 		for(var i = 0;i < markers.length; i++){
-			var marker = markers[i];
+			marker = markers[i]
 			marker.setMap(null);
 		}
 		main_dict[line_name] = [];
@@ -266,23 +211,12 @@ function dis_recv_line__(dis_list){
 
 }
 
-function dis_recv_buses__(dis_list){
-	console.log("dis list", dis_list);
-	for(i=0; i<dis_list.length ; i++){
-		var line_name = dis_list[i]['line']["name"];
-		var markers = main_dictB[line_name];
-		for(var i = 0;i < markers.length; i++){
-			var marker = markers[i];
-			marker.setMap(null);
-		}
-		main_dictB[line_name] = [];
-	}
-
-}
-
-
 
 function show_recv_stations__(add_list){
+		for(var i = 0; i < add_list.length; i++)
+			add_list[i]["name"] = add_list[i]["line"]["name"];
+		dis_recv_line__(add_list);
+		var stations ;
 		for(i=0; i<add_list.length ; i++){
 			console.log("i");
 
@@ -291,7 +225,7 @@ function show_recv_stations__(add_list){
 
 
 					for(k=0; k<add_list[i]["stations"].length ; k++){
-						console.log("k");
+						console.log("k")
 
 						var station_name = add_list[i]["stations"][k]["name"];
 						var station_line = add_list[i]["stations"][k]["line"];
@@ -309,6 +243,7 @@ function show_recv_stations__(add_list){
 
 
 function show_recv_buses__(add_list){
+	var stations ;
 	for(i=0; i<add_list.length ; i++){
 		console.log("i");
 
@@ -330,8 +265,3 @@ function show_recv_buses__(add_list){
 
 
 
-
-    </script>
-	</body>
-
-</html>
